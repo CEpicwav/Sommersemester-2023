@@ -4,10 +4,11 @@ var zufallsgedicht;
     let subjects;
     let predicates;
     let objects;
-    subjects = ["Harry", "Hermine", "Hagrid", "Tom Riddle", "Snape", "Dumbledore"];
-    predicates = ["hasst", "liebt", "verzaubert", "studiert", "bewundert", "zerstoert"];
-    objects = ["Zaubertraenke", "deine Mom", "Dementoren", "den Zeitumkehrer", "das Spaghettimonster", "seinen Vater"];
+    subjects = ["Hermine", "Harry", "Hagrid", "Snape", "Voldemort", "Lena"];
+    predicates = ["trinkt",  "liebt", "isst", "verrät", "bewundert", "verspeist"];
+    objects = ["Bier", "Hagrid", "Harry", "Voldemort", "Lena Meister", "Voldemort"];
     console.log(subjects, predicates, objects);
+
     for (let index = subjects.length; index >= 2; index--) {
         console.log(getVerse(subjects, predicates, objects));
     }
