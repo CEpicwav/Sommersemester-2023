@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./data.js" defer></script>
+    <title>To Do</title>
+</head>
+
+<body>
+    <h1>To Do - Liste</h1>
+    <button id="new">New</button>
+    <div id="div1">
+
+    </div>
+    <div id="div2">
+        <h3>To-Do erstellen</h3>
+        <label for="todotag">Markus Abgaben Kontrollieren</label> <br>
+        <form action="" id="myform">
+            <fieldset>
+                <select name="names" id="name">Name
+                    <option value="Leon">Leon</option>
+                    <option value="Lena">Lena</option>
+                    <option value="Bennet">Bennet</option>
+                    <option value="Tobi">Tobi</option>
+                </select> <br>
+                <input type="text" name="ToDo" id="todo" placeholder="aufgabe"> <br>
+                <input type="datetime-local" name="date" id="dates"> <br>
+                <textarea name="comments" id="comment" cols="30" rows="10" placeholder="Kommentar"></textarea> <br>
+                <label>
+                    <input type="radio" name="radio1" value="in Bearbeitung">
+                    in Bearbeitung
+                </label>
+                <label>
+                    <input type="radio" name="radio1" value="zu Erledigen">
+                    zu Erledigen
+                </label><br />
+            </fieldset>
+        </form>
+        <button id="add">+</button>
+    </div>
+</body>
+
+</html>
