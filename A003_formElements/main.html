@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js" defer></script>
+    <title>To Do</title>
+</head>
+
+<body>
+    <h1>To Do - Liste</h1>
+    <button id="new">New</button>
+    <div id="div1">
+        <input type="checkbox" name="todotag" id="todo" placeholder="hier aufgabe">
+        <label for="todotag">Markus Abgaben Kontrollieren</label> <br>
+        <button id="edit">Edit</button>
+    </div>
+    <div id="div2">
+        <h2>To-Do erstellen</h2>
+        <form action="" id="formular">
+            <select name="names" id="name">Name
+                <option value="Leon">Leon</option>
+                <option value="Lena">Lena</option>
+                <option value="Bennet">Bennet</option>
+                <option value="Tobi">Tobi</option>
+            </select> <br>
+            <input type="text" name="To Do" id="todo" placeholder="aufgabe"> <br>
+            <input type="datetime-local" name="Datum" id="date"> <br>
+            <textarea name="Kommentar" id="comment" cols="30" rows="10" placeholder="kommentar"></textarea> <br>
+            <label>
+                <input type="radio" name="radio1" value="ib">
+                in Bearbeitung
+            </label>
+            <label>
+                <input type="radio" name="radio1" value="ze">
+                zu Erledigen
+            </label><br />
+        </form>
+        <button id="add">+</button>
+    </div>
+</body>
+
+</html>
