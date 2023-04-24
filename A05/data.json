@@ -1,3 +1,14 @@
 {
-    
+    {
+        "name": "Lena",
+        "task": "EIA machen",
+        "date": "25.04.2023",
+        "state": "in progress"
+    },
+    {
+        "name": "Lena",
+        "task": "immer noch EIA machen",
+        "date": "25.04.2023",
+        "state": "in progress"
+    }
 }
