@@ -1,0 +1,49 @@
+{
+    "personen": [
+        {"name": "Leon"},
+        {"name": "Lena"},
+        {"name": "Bennett"},
+        {"name": "Tobi"}
+    ],
+    "Aufgabe": [
+        {"ToDo": "Leon"},
+        {"ToDo": "Lena"},
+        {"ToDo": "Bennett"},
+        {"ToDo": "Tobi"}
+    ],
+    "Date": [
+        {"datum": "29.04.2023"},
+        {"datum": "26.05.2025"},
+        {"datum": "19.08.2021"},
+        {"datum": "25.5.2017"}
+    ],
+    "Comment": [
+        {"kommentar": "Markus macht das heute"},
+        {"kommentar": "Markus macht nen ruhigen"},
+        {"kommentar": "Markus macht morgen dann"},
+        {"kommentar": "Markus macht sofort Hoppa"}
+    ],
+    "Radio": [
+        {"zu Erledigen": "zu erledigen"},
+        {"In Bearbeitung": "wird bearbeitet"}
+    ],
+
+
+
+    "ToDo1":[
+        {"name":"Leon"},
+        {"todo":"Wahlplakate machen"},
+        {"date":"05.05.2023"},
+        {"comment":"über InDesign"},
+        {"radio":"zu erledigen"}
+    ],
+
+    "ToDo2":[
+        {"name":"Lena"},
+        {"todo":"Wie immer nichts tun die Alte"},
+        {"date":"12.12.2120"},
+        {"comment":"zugedeckt"},
+        {"radio":"in bearbeitung"}
+    ]
+
+}
