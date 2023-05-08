@@ -1,10 +1,11 @@
-var client;
-(function (client) {
+var server;
+(function (server) {
     /*
-   Aufgabe: <L005 A005_toDoAppClient>
+   Aufgabe: <L006 A006_toDoAppClient>
    Name: <Leon Dorner>
    Matrikel: <273072>
-   Datum: <26.04.2023>
+   Datum: <05.05.2023>
+   Quellen: Markus, danke du Ehrenbruder. <3 5
    */
     window.addEventListener("load", hndlload);
     function hndlload() {
@@ -57,9 +58,11 @@ var client;
         console.log("this" + gotdata);
         console.log("Response", response);
         console.log("before" + offer);
-        document.querySelector("#div1").innerHTML = "Aufgabe: " + offer; //+ "  bis zum: "+ gotdata["date"]+ "  Kommentar: "+ gotdata["comment"]+ "  Wird gemacht von: "+ gotdata["person"];
+        document.querySelector("#div1").innerHTML = "Response: " + offer; //+ "  bis zum: "+ gotdata["date"]+ "  Kommentar: "+ gotdata["comment"]+ "  Wird gemacht von: "+ gotdata["person"];
     }
-    communicate("Datainput.json");
+    //    let url: string = "Datainput.json";
+    let url = "https://webuser.hs-furtwangen.de/~dornerle/myMingi/?";
+    communicate(url);
     let divcontainer = document.querySelector("#div2");
     function newbtn() {
         divcontainer.style.setProperty("visibility", "visible");
@@ -78,10 +81,16 @@ var client;
         document.getElementById("div1").removeChild(newdiv);
         document.querySelector("#div1").removeChild(newP);
     }
+    function query() {
+        let query = new URLSearchParams();
+        query.set("command", "insert");
+        query.set("collection", "Orders");
+        query.set("data", JSON.stringify(json));
+    }
     function editbtn() {
         divcontainer.style.setProperty("visibility", "visible");
         document.getElementById("div1").removeChild(newdiv);
         document.querySelector("#div1").removeChild(newP);
     }
-})(client || (client = {}));
+})(server || (server = {}));
 //# sourceMappingURL=client.js.map

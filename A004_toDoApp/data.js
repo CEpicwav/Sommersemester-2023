@@ -1,4 +1,3 @@
-"use strict";
 var Datensammlung;
 (function (Datensammlung) {
     /*
@@ -52,6 +51,7 @@ var Datensammlung;
         edit.innerHTML = "Edit";
         edit.addEventListener("click", function () {
             divcontainer.style.setProperty("visibility", "visible");
+            this.parentNode.parentNode.removeChild(this.parentNode);
         });
         newP.appendChild(trash);
         newP.appendChild(edit);

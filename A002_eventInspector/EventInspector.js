@@ -1,4 +1,3 @@
-"use strict";
 var EventInspector;
 (function (EventInspector) {
     window.addEventListener('load', handleLoad);
@@ -44,3 +43,4 @@ var EventInspector;
         console.log('hi!');
     }
 })(EventInspector || (EventInspector = {}));
+//# sourceMappingURL=EventInspector.js.map
