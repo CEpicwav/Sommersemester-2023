@@ -1,4 +1,3 @@
-"use strict";
 var GeneratedArt;
 (function (GeneratedArt) {
     /*
@@ -108,19 +107,18 @@ var GeneratedArt;
         crc2.fill();
         crc2.closePath();
     }
-
     function drawParticle(_position, _size) {
-        let nParticles = 10;
+        let nParticles = 5;
         let particle = new Path2D();
-        let radiusParticle = 8;
-        particle.arc(10, 10, radiusParticle, 10, 10 * Math.PI);
+        let radiusParticle = 4;
+        particle.arc(5, 5, radiusParticle, 5, 5 * Math.PI);
         crc2.fillStyle = changeColor();
-        crc2.rotate(getRandomNumber(500, 400));
+        crc2.rotate(getRandomNumber(400, 400));
         crc2.save();
         crc2.translate(_position.x, _position.y);
         crc2.restore();
         for (let drawn = 0; drawn < nParticles; drawn++) {
-            let x = (Math.random() - 0.5) * _size.x;
+            let x = (Math.random() - 1) * _size.x;
             let y = -(Math.random() * _size.y);
             crc2.save();
             crc2.translate(x, y);
@@ -129,3 +127,4 @@ var GeneratedArt;
         }
     }
 })(GeneratedArt || (GeneratedArt = {}));
+//# sourceMappingURL=art.js.map

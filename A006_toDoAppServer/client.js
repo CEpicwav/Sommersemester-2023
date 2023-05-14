@@ -81,11 +81,11 @@ var server;
         document.getElementById("div1").removeChild(newdiv);
         document.querySelector("#div1").removeChild(newP);
     }
-    function query() {
+    function createQuery() {
         let query = new URLSearchParams();
         query.set("command", "insert");
         query.set("collection", "Orders");
-        query.set("data", JSON.stringify(json));
+        // query.set("data", JSON.stringify(json));
     }
     function editbtn() {
         divcontainer.style.setProperty("visibility", "visible");
