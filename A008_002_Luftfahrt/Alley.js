@@ -5,6 +5,7 @@ var L08_Luftfahrt_Canvas;
     Name: <Leon Dorner>
     Matrikel: <273072>
     Datum: <14.05.2023>
+    Quellen:
     */
     let h;
     let s;
@@ -32,23 +33,23 @@ var L08_Luftfahrt_Canvas;
             drawGras({ x: randomX, y: randomY });
         }
         ;
-        drawPeople({ x: 763, y: 234 });
+        drawPeople({ x: 763, y: 234 }, 40, "grey");
         drawMountain(posMountain, 150, 705, "grey", "darkgrey");
         drawPlace({ x: 1010, y: 725 });
         drawTree({ x: 318, y: 832 });
         drawTree({ x: 280, y: 800 });
         drawTree({ x: 242, y: 841 });
         drawBoot({ x: 1020, y: 735 });
-        drawPeople({ x: 1440, y: 688 });
-        drawPeople({ x: 1480, y: 663 });
-        drawPeople({ x: 1400, y: 676 });
-        drawPeople({ x: 430, y: 541 });
-        drawPeople({ x: 516, y: 594 });
+        drawPeople({ x: 1440, y: 688 }, 40, "yellow");
+        drawPeople({ x: 1480, y: 663 }, 40, "red");
+        drawPeople({ x: 1400, y: 676 }, 40, "green");
+        drawPeople({ x: 430, y: 541 }, 40, "blue");
+        drawPeople({ x: 516, y: 594 }, 40, "white");
         drawParaglider({ x: 1380, y: 315 });
         drawParaglider({ x: 960, y: 273 });
         drawParaglider({ x: 540, y: 210 });
         drawParaglider({ x: 960, y: 585 });
-        //Digga ich peil den Fehler nicht vallah billah Marcus bitte erlöse mit mit einem saftigen Döner
+        //Digga ich peil den Fehler nicht vallah billah Markus bitte erlöse mit mit einem saftigen Döner
     }
     function drawBackground() {
         let gradient = crc2.createLinearGradient(0, 0, 0, crc2.canvas.height);
