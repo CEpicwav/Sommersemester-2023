@@ -1,55 +1,100 @@
-var L08_Luftfahrt_Canvas;
-(function (L08_Luftfahrt_Canvas) {
+var L09_Luftfahrt_Classes;
+(function (L09_Luftfahrt_Classes) {
     /*
-    Aufgabe: <L008_004_Luftfahrt>
+    Aufgabe: <L009_002_Luftfahrt>
     Name: <Leon Dorner>
     Matrikel: <273072>
-    Datum: <14.05.2023>
-    Quellen:
+    Datum: <26.05.2023>
+    Quellen: Markus
     */
+    // export interface Vector {
+    //     x: number;
+    //     y: number;
+    // }
     let h;
     let s;
     let l;
     window.addEventListener("load", handleLoad);
     let crc2;
     let golden = 0.62;
+    let bgImage;
+    let aviators = [];
+    let fps = 30;
     function handleLoad(_event) {
-        let canvas = document.querySelector("canvas");
-        crc2 = canvas.getContext("2d");
+        L09_Luftfahrt_Classes.canvas = document.querySelector("canvas");
+        crc2 = L09_Luftfahrt_Classes.canvas.getContext("2d");
         console.log(crc2.canvas.height);
         console.log(crc2.canvas.width);
         let horizon = crc2.canvas.height * golden;
-        let posMountains = { x: 0, y: horizon };
-        let posMountain = { x: 0, y: horizon + 30 };
+        let posMountains = new L09_Luftfahrt_Classes.Vector(0, horizon);
+        let posMountain = new L09_Luftfahrt_Classes.Vector(0, horizon + 30);
         drawBackground();
-        drawSun({ x: 200, y: 75 });
-        drawCloud({ x: 500, y: 100 }, { x: 200, y: 40 });
-        drawCloud({ x: 1300, y: 120 }, { x: 100, y: 60 });
+        drawSun(new L09_Luftfahrt_Classes.Vector(200, 75));
+        drawCloud(new L09_Luftfahrt_Classes.Vector(500, 100), new L09_Luftfahrt_Classes.Vector(200, 40));
+        drawCloud(new L09_Luftfahrt_Classes.Vector(1300, 120), new L09_Luftfahrt_Classes.Vector(100, 60));
         drawMountains(posMountains, 75, 160, "grey", "white");
         drawMountains(posMountains, 50, 110, "grey", "lightgrey");
-        for (let x = 0; x < 25; x++) {
+        for (let x = 0; x < 250; x++) {
             let randomX = Math.random() * crc2.canvas.width;
-            let randomY = (Math.random() * crc2.canvas.height) - (1 - (crc2.canvas.height * golden));
-            drawGras({ x: randomX, y: randomY });
+            let randomY = (Math.random() * crc2.canvas.height / golden) + golden * L09_Luftfahrt_Classes.canvas.height;
+            drawGras(new L09_Luftfahrt_Classes.Vector(randomX, randomY));
         }
         ;
-        drawPeople({ x: 763, y: 234 }, 40, "grey");
-        drawMountain(posMountain, 150, 705, "grey", "darkgrey");
-        drawPlace({ x: 1010, y: 725 });
-        drawTree({ x: 318, y: 832 });
-        drawTree({ x: 280, y: 800 });
-        drawTree({ x: 242, y: 841 });
-        drawBoot({ x: 1020, y: 735 });
-        drawPeople({ x: 1440, y: 688 }, 40, "yellow");
-        drawPeople({ x: 1480, y: 663 }, 40, "red");
-        drawPeople({ x: 1400, y: 676 }, 40, "green");
-        drawPeople({ x: 430, y: 541 }, 40, "blue");
-        drawPeople({ x: 516, y: 594 }, 40, "white");
-        drawParaglider({ x: 1380, y: 315 });
-        drawParaglider({ x: 960, y: 273 });
-        drawParaglider({ x: 540, y: 210 });
-        drawParaglider({ x: 960, y: 585 });
-        //Digga ich peil den Fehler nicht vallah billah Markus bitte erlöse mit mit einem saftigen Döner
+        drawMountain(posMountain, 450, 605, "grey", "darkgrey");
+        drawPlace(new L09_Luftfahrt_Classes.Vector(1010, 725));
+        drawTree(318, 832);
+        drawTree(280, 800);
+        drawTree(242, 841);
+        drawBoot(1020, 735);
+        bgImage = crc2.getImageData(0, 0, L09_Luftfahrt_Classes.canvas.width, L09_Luftfahrt_Classes.canvas.height);
+        drawPeople();
+        createGliders(10);
+        drawGliders();
+        window.setInterval(update, 1000 / fps);
+    }
+    function drawPeople() {
+        drawPerson(1440, 688, 40, randomColor());
+        drawPerson(1480, 663, 40, randomColor());
+        drawPerson(1400, 676, 40, randomColor());
+        drawPerson(430, 541, 40, randomColor());
+        drawPerson(516, 594, 40, randomColor());
+    }
+    function update() {
+        crc2.putImageData(bgImage, 0, 0);
+        drawPeople();
+        for (const aviator of aviators) {
+            aviator.move();
+            drawGlider(aviator);
+        }
+    }
+    function randomVector(_xMax, _yMax) {
+        let rndX = Math.random() * _xMax;
+        let rndY = Math.random() * _yMax;
+        let randomPos = new L09_Luftfahrt_Classes.Vector(rndX, rndY);
+        return randomPos;
+    }
+    function createGliders(_amount) {
+        for (let i = 0; i < _amount; i++) {
+            let aviator = new L09_Luftfahrt_Classes.Aviator(randomVector(L09_Luftfahrt_Classes.canvas.width, golden * L09_Luftfahrt_Classes.canvas.height), randomVector(10, 10), randomColor());
+            aviators.push(aviator);
+        }
+    }
+    function drawGliders() {
+        for (const aviator of aviators) {
+            drawGlider(aviator);
+        }
+    }
+    function drawGlider(_aviator) {
+        drawParaglider(_aviator.position.x, _aviator.position.y - 50);
+        drawPerson(_aviator.position.x, _aviator.position.y, 40, _aviator.color);
+    }
+    function randomColor() {
+        let letters = "0123456789ABCDEF";
+        let color = "#";
+        for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
     }
     function drawBackground() {
         let gradient = crc2.createLinearGradient(0, 0, 0, crc2.canvas.height);
@@ -141,7 +186,7 @@ var L08_Luftfahrt_Canvas;
     }
     ;
     function drawGras(_position) {
-        let size = _position.y * _position.y * 0.00008;
+        let size = 10;
         let waveFrequency = 3;
         let waveAmplitude = 1;
         crc2.save();
@@ -158,7 +203,7 @@ var L08_Luftfahrt_Canvas;
         gradient.addColorStop(0, "darkgreen");
         gradient.addColorStop(1, "green");
         crc2.fillStyle = gradient;
-        crc2.fill();
+        crc2.stroke();
         crc2.beginPath();
         crc2.moveTo(-(size / 4), -(size / 4) * 3);
         for (let x = -(size / 4); x < size / 4; x += 0.1) {
@@ -172,7 +217,7 @@ var L08_Luftfahrt_Canvas;
         gradientTexture.addColorStop(0.5, "rgba(255, 255, 255, 0.2)");
         gradientTexture.addColorStop(1, "rgba(0, 0, 0, 0)");
         crc2.fillStyle = gradientTexture;
-        crc2.fill();
+        crc2.stroke();
         crc2.restore();
     }
     ;
@@ -192,9 +237,9 @@ var L08_Luftfahrt_Canvas;
         crc2.restore();
     }
     ;
-    function drawTree(_position) {
+    function drawTree(_x, _y) {
         crc2.save();
-        crc2.translate(_position.x, _position.y);
+        crc2.translate(_x, _y);
         crc2.beginPath();
         crc2.moveTo(0, 0);
         crc2.lineTo(0, -40);
@@ -221,9 +266,9 @@ var L08_Luftfahrt_Canvas;
         crc2.restore();
     }
     ;
-    function drawBoot(_position) {
+    function drawBoot(_x, _y) {
         crc2.save();
-        crc2.translate(_position.x, _position.y);
+        crc2.translate(_x, _y);
         // Ändere die Form des Kiosks
         crc2.beginPath();
         crc2.moveTo(0, -50);
@@ -244,9 +289,9 @@ var L08_Luftfahrt_Canvas;
         crc2.restore();
     }
     ;
-    function drawPeople(_position, _size, _color) {
+    function drawPerson(_x, _y, _size, _color) {
         crc2.save();
-        crc2.translate(_position.x, _position.y);
+        crc2.translate(_x, _y);
         // Kopf
         crc2.beginPath();
         crc2.arc(0, -_size / 10, _size / 4, 0, 2 * Math.PI);
@@ -282,12 +327,12 @@ var L08_Luftfahrt_Canvas;
         crc2.restore();
     }
     ;
-    function drawParaglider(_position) {
+    function drawParaglider(_x, _y) {
         const color = "white";
         const width = 50;
         const height = 50;
         crc2.save();
-        crc2.translate(_position.x, _position.y);
+        crc2.translate(_x, _y);
         // draw paraglider body
         crc2.beginPath();
         crc2.moveTo(0, 0);
@@ -321,5 +366,5 @@ var L08_Luftfahrt_Canvas;
     }
     ;
     //vallah auch hier wo sind die hunde jetzt hin amk
-})(L08_Luftfahrt_Canvas || (L08_Luftfahrt_Canvas = {}));
+})(L09_Luftfahrt_Classes || (L09_Luftfahrt_Classes = {}));
 //# sourceMappingURL=Alley.js.map
