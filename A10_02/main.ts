@@ -20,10 +20,10 @@ namespace L10_Luftfahrt_Classes {
     window.addEventListener("load", handleLoad);
 
     export let canvas: HTMLCanvasElement;
-    let crc2: CanvasRenderingContext2D;
-    let golden: number = 0.62;
+    export let crc2: CanvasRenderingContext2D;
+    export let golden: number = 0.62;
     let bgImage: ImageData;
-    let aviators: Aviator[] = [];
+    let moveables: Moveable[] = [];
     let fps: number = 30;
 
 
@@ -59,9 +59,9 @@ namespace L10_Luftfahrt_Classes {
 
         drawPeople();
         createGliders(10);
-        drawGliders();
-
-        window.setInterval(update, 1000 / fps)
+        createLeaves(100);
+        update();
+        window.setInterval(update, 1000 / fps);
     }
 
     function drawPeople(): void {
@@ -76,13 +76,13 @@ namespace L10_Luftfahrt_Classes {
     function update(): void {
         crc2.putImageData(bgImage, 0, 0);
         drawPeople();
-        for (const aviator of aviators) {
-            aviator.move();
-            drawGlider(aviator);
+        for (const moveable of moveables) {
+            moveable.move();
+            moveable.draw();
         }
     }
 
-    function randomVector(_xMax: number, _yMax: number): Vector {
+    export function randomVector(_xMax: number, _yMax: number): Vector {
         let rndX: number = Math.random() * _xMax;
         let rndY: number = Math.random() * _yMax;
         let randomPos: Vector = new Vector(rndX, rndY);
@@ -92,20 +92,27 @@ namespace L10_Luftfahrt_Classes {
     function createGliders(_amount: number): void {
         for (let i = 0; i < _amount; i++) {
             let aviator: Aviator = new Aviator(randomVector(canvas.width, golden * canvas.height), randomVector(10, 10), randomColor());
-            aviators.push(aviator);
+            moveables.push(aviator);
         }
     }
 
-    function drawGliders(): void {
-        for (const aviator of aviators) {
-            drawGlider(aviator);
+    function createLeaves(_amount: number): void {
+        for (let i = 0; i < _amount; i++) {
+            let leaf: Leaf = new Leaf();
+            moveables.push(leaf);
         }
     }
 
-    function drawGlider(_aviator: Aviator): void {
-        drawParaglider(_aviator.position.x, _aviator.position.y - 50);
-        drawPerson(_aviator.position.x, _aviator.position.y, 40, _aviator.color);
-    }
+    // function drawGliders(): void {
+    //     for (const aviator of moveables) {
+    //         drawGlider(aviator);
+    //     }
+    // }
+
+    // function drawGlider(_aviator: Aviator): void {
+    //     drawParaglider(_aviator.position.x, _aviator.position.y - 50);
+    //     drawPerson(_aviator.position.x, _aviator.position.y, 40, _aviator.color);
+    // }
 
     function randomColor(): string {
         let letters: string = "0123456789ABCDEF";
@@ -390,9 +397,9 @@ namespace L10_Luftfahrt_Classes {
     ;
 
     function drawParaglider(_x: number, _y: number): void {
-        const color = "white";
-        const width = 50;
-        const height = 50;
+        let color = "white";
+        let width = 50;
+        let height = 50;
 
         crc2.save();
         crc2.translate(_x, _y);

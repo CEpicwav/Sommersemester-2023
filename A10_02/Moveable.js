@@ -8,8 +8,8 @@ var L10_Luftfahrt_Classes;
             this.velocity = _vel;
         }
         /**
- * move
- */
+        * move
+        */
         move() {
             this.position.add(this.velocity);
             if (this.position.x >= L10_Luftfahrt_Classes.canvas.width + 60) {
@@ -24,6 +24,11 @@ var L10_Luftfahrt_Classes;
             if (this.position.y <= -60) {
                 this.position.y = L10_Luftfahrt_Classes.canvas.height + 50;
             }
+        }
+        /**
+         * draw
+         */
+        draw() {
         }
     }
     L10_Luftfahrt_Classes.Moveable = Moveable;

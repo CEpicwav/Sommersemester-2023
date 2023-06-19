@@ -8,12 +8,11 @@ namespace L10_Luftfahrt_Classes {
         constructor(_pos: Vector, _vel: Vector) {
             this.position = _pos;
             this.velocity = _vel;
-
-
         }
+        
         /**
- * move
- */
+        * move
+        */
         public move() {
             this.position.add(this.velocity);
 
@@ -31,5 +30,12 @@ namespace L10_Luftfahrt_Classes {
             }
         }
 
+        
+        /**
+         * draw
+         */
+        public draw() {
+            
+        }
     }
 }
