@@ -36,4 +36,4 @@ var L09_Luftfahrt_Classes;
     }
     L09_Luftfahrt_Classes.Aviator = Aviator;
 })(L09_Luftfahrt_Classes || (L09_Luftfahrt_Classes = {}));
-//# sourceMappingURL=aviator.js.map
+//# sourceMappingURL=Aviator.js.map
