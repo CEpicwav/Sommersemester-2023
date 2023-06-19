@@ -12,9 +12,9 @@ namespace L10_Luftfahrt_Classes {
     //     x: number;
     //     y: number;
     // }
-    let h: number;
-    let s: number;
-    let l: number;
+    // let h: number;
+    // let s: number;
+    // let l: number;
 
 
     window.addEventListener("load", handleLoad);

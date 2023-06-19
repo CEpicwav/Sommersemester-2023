@@ -11,9 +11,9 @@ var L10_Luftfahrt_Classes;
     //     x: number;
     //     y: number;
     // }
-    let h;
-    let s;
-    let l;
+    // let h: number;
+    // let s: number;
+    // let l: number;
     window.addEventListener("load", handleLoad);
     L10_Luftfahrt_Classes.golden = 0.62;
     let bgImage;
